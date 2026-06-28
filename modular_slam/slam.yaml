@@ -1,0 +1,39 @@
+#APPLICATION
+application:
+slam type: monocular
+
+#INPUT
+input:
+mode: euro
+
+#SENSORS
+sensors:
+imu:
+enabled: false;
+
+monocularcamera:
+enabled: false
+
+stereocamera:
+enabled: false
+
+rgbdcamera:
+enabled: false
+
+#CALIBRATION
+calibration:
+camera:
+type: yaml
+path: ""
+
+imu:
+type: none
+path: none
+
+lidar:
+type: none
+path: none
+
+#Visual frontend
+
+
