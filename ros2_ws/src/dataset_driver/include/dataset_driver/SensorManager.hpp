@@ -7,8 +7,8 @@
 #include <unordered_map>
 #include <vector>
 
-#include "Sensor.hpp"
-#include "SensorType.hpp"
+#include "dataset_driver/sensor_definition/Sensor.hpp"
+#include "dataset_driver/SensorType.hpp"
 
 class SensorManager
 {

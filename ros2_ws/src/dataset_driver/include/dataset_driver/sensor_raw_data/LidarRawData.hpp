@@ -4,7 +4,7 @@
 
 #include <Eigen/Core>
 
-#include "RawSensorData.hpp"
+#include "dataset_driver/sensor_raw_data/RawSensorData.hpp"
 
 class LidarRawData : public RawSensorData
 {

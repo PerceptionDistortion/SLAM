@@ -2,7 +2,7 @@
 
 #include <Eigen/Dense>
 
-#include "RawSensorData.hpp"
+#include "dataset_driver/sensor_raw_data/RawSensorData.hpp"
 
 class ImuRawData : public RawSensorData
 {

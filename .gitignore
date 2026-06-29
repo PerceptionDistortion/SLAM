@@ -1,5 +1,5 @@
 ############################
-# ROS2
+# ROS2 Workspace
 ############################
 
 ros2_ws/build/
@@ -7,10 +7,17 @@ ros2_ws/install/
 ros2_ws/log/
 
 ############################
-# CMake
+# Build directories anywhere
 ############################
 
 **/build/
+**/install/
+**/log/
+
+############################
+# CMake
+############################
+
 **/CMakeFiles/
 **/CMakeCache.txt
 **/cmake_install.cmake
@@ -61,7 +68,7 @@ a.out
 datasets/
 
 ############################
-# Python cache (ROS tools)
+# Python cache
 ############################
 
 __pycache__/

@@ -2,7 +2,7 @@
 
 #include <opencv2/core.hpp>
 
-#include "RawSensorData.hpp"
+#include "dataset_driver/sensor_raw_data/RawSensorData.hpp"
 
 class CameraRawData : public RawSensorData
 {

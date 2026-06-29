@@ -3,6 +3,6 @@
 #include "SensorBuffer.hpp"
 #include "CameraRawData.hpp"
 
-class CameraBuffer : public SensorBuffer<CameraRawData>
+class CameraBuffer : public SensorBuffer
 {
 };

@@ -1,26 +1,29 @@
 #pragma once
 
 #include <deque>
+#include <memory>
 #include <mutex>
 
-template<typename T>
+#include "dataset_driver/sensor_raw_data/RawSensorData.hpp"
+
 class SensorBuffer
 {
 public:
     SensorBuffer() = default;
     virtual ~SensorBuffer() = default;
 
-    void push(const T& data)
+    void push(const std::shared_ptr<RawSensorData>& data)
     {
         std::lock_guard<std::mutex> lock(mutex_);
         buffer_.push_back(data);
     }
 
-    bool pop(T& data)
+    bool pop(std::shared_ptr<RawSensorData>& data)
     {
         std::lock_guard<std::mutex> lock(mutex_);
 
-        if (buffer_.empty())return false;
+        if (buffer_.empty())
+            return false;
 
         data = buffer_.front();
         buffer_.pop_front();
@@ -28,11 +31,12 @@ public:
         return true;
     }
 
-    bool popLatest(T& data)
+    bool popLatest(std::shared_ptr<RawSensorData>& data)
     {
         std::lock_guard<std::mutex> lock(mutex_);
 
-        if (buffer_.empty())return false;
+        if (buffer_.empty())
+            return false;
 
         data = buffer_.back();
         buffer_.clear();
@@ -59,7 +63,7 @@ public:
     }
 
 protected:
-    std::deque<T> buffer_;
+    std::deque<std::shared_ptr<RawSensorData>> buffer_;
 
     mutable std::mutex mutex_;
 };

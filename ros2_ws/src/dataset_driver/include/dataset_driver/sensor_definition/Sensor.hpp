@@ -2,7 +2,10 @@
 
 #pragma once
 
-#include"SensorContext.hpp"
+#include<memory>
+
+#include "dataset_driver/sensor_definition/SensorContext.hpp"
+#include"dataset_driver/sensor_buffers/SensorBuffer.hpp"
 
 class Sensor
 {
@@ -15,4 +18,5 @@ public:
 
 protected:
     SensorContext context_;
+    std::shared_ptr<SensorBuffer> buffer_;
 };

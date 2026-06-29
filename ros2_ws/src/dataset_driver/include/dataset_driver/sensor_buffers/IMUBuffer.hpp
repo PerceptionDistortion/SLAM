@@ -3,6 +3,6 @@
 #include "SensorBuffer.hpp"
 #include "ImuRawData.hpp"
 
-class ImuBuffer : public SensorBuffer<ImuRawData>
+class ImuBuffer : public SensorBuffer
 {
 };
