@@ -20,56 +20,63 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 
-find_package(rclcpp REQUIRED)
-find_package(sensor_msgs REQUIRED)
-find_package(cv_bridge REQUIRED)
-find_package(image_transport REQUIRED)
-
 find_package(OpenCV REQUIRED)
 find_package(Eigen3 REQUIRED)
-
 find_package(yaml-cpp REQUIRED)
 
 #################################################
-# Executable
+# Library
 #################################################
 
-add_executable(dataset_driver_node
-    # Add .cpp files here as you implement them
+add_library(${PROJECT_NAME}
+
+    #################################################
+    # Dataset Drivers
+    #################################################
 
     src/datasets/EurocDatasetDriver.cpp
-    # src/datasets/DatasetPlayer.cpp
+
+    #################################################
+    # Managers
+    #################################################
 
     src/SensorManager.cpp
+    src/SensorDataBundle.cpp
 
-    # src/sensor_buffers/CameraBuffer.cpp
-    # src/sensor_buffers/IMUBuffer.cpp
-    # src/sensor_buffers/LidarBuffer.cpp
+    #################################################
+    # Sensor Definitions
+    #################################################
 
     src/sensor_definition/Sensor.cpp
+
+    #################################################
+    # Add more cpp files here as they are implemented
+    #################################################
+
     # src/sensor_definition/CameraSensor.cpp
     # src/sensor_definition/IMUSensor.cpp
+    # src/sensor_definition/LidarSensor.cpp
 
     # src/sensor_raw_data/CameraRawData.cpp
     # src/sensor_raw_data/IMURawData.cpp
+    # src/sensor_raw_data/LidarRawData.cpp
 )
 
-target_include_directories(dataset_driver_node
-    PRIVATE
-        include
+#################################################
+# Include Directories
+#################################################
+
+target_include_directories(${PROJECT_NAME}
+    PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
 )
 
-ament_target_dependencies(
-    dataset_driver_node
+#################################################
+# Link Libraries
+#################################################
 
-    rclcpp
-    sensor_msgs
-    cv_bridge
-    image_transport
-)
-
-target_link_libraries(
-    dataset_driver_node
+target_link_libraries(${PROJECT_NAME}
 
     Eigen3::Eigen
     ${OpenCV_LIBS}
@@ -81,28 +88,51 @@ target_link_libraries(
 #################################################
 
 install(
-    TARGETS
-        dataset_driver_node
+    TARGETS ${PROJECT_NAME}
 
-    DESTINATION
-        lib/${PROJECT_NAME}
+    EXPORT export_${PROJECT_NAME}
+
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin
+)
+
+install(
+    DIRECTORY include/
+
+    DESTINATION include
+)
+
+install(
+    EXPORT export_${PROJECT_NAME}
+
+    FILE ${PROJECT_NAME}Targets.cmake
+
+    NAMESPACE ${PROJECT_NAME}::
+
+    DESTINATION share/${PROJECT_NAME}/cmake
 )
 
 install(
     DIRECTORY
-        include/
-
-    DESTINATION
-        include
-)
-
-install(
-    DIRECTORY
-        launch
         config
 
     DESTINATION
         share/${PROJECT_NAME}
+)
+
+#################################################
+# Export
+#################################################
+
+ament_export_include_directories(include)
+
+ament_export_targets(export_${PROJECT_NAME})
+
+ament_export_dependencies(
+    OpenCV
+    Eigen3
+    yaml-cpp
 )
 
 #################################################

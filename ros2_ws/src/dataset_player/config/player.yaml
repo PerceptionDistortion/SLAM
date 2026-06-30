@@ -1,0 +1,11 @@
+dataset:
+
+  type: euroc
+
+  config: "/home/anupam/slam_framework/ros2_ws/src/dataset_driver/config/euroc.yaml"
+
+playback:
+
+  rate: 1.0
+
+  loop: false

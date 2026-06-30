@@ -1,8 +1,5 @@
 #include "dataset_driver/SensorDataBundle.hpp"
 
-namespace dataset_driver
-{
-
 void SensorDataBundle::addData(
     const std::shared_ptr<RawSensorData>& data)
 {
@@ -28,6 +25,4 @@ const std::vector<std::shared_ptr<RawSensorData>>&
 SensorDataBundle::getData() const
 {
     return sensorData_;
-}
-
 }

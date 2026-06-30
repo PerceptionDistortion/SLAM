@@ -5,9 +5,6 @@
 
 #include "dataset_driver/sensor_raw_data/RawSensorData.hpp"
 
-namespace dataset_driver
-{
-
 class SensorDataBundle
 {
 public:
@@ -26,5 +23,3 @@ public:
 private:
     std::vector<std::shared_ptr<RawSensorData>> sensorData_;
 };
-
-}
