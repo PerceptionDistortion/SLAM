@@ -35,9 +35,6 @@ find_package(yaml-cpp REQUIRED)
 #################################################
 
 add_executable(dataset_driver_node
-
-    src/main.cpp
-
     # Add .cpp files here as you implement them
 
     src/datasets/EurocDatasetDriver.cpp

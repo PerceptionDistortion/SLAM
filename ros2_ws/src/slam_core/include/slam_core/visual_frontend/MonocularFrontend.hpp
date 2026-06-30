@@ -1,0 +1,4 @@
+class MonocularFrontend{
+public:
+private:
+};
