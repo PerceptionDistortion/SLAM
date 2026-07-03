@@ -1,44 +1,44 @@
-//Init the dataset driver
-//Create ROS publisher for the dataset
-//Read raw sensor data
-//Convert data to ROS messages
-//Publish topics
 #pragma once
 
-#include <memory>
+#include<memory>
+#include<string>
 
-#include <rclcpp/rclcpp.hpp>
+#include<rclcpp/rclcpp.hpp>
 
-#include "PublisherManager.hpp"
+#include"sensor_driver/SensorManager.hpp"
+#include"sensor_driver/sensor_drivers/SensorDriver.hpp"
+#include"dataset_player/PublisherManager.hpp"
 
-#include "dataset_driver/DatasetDriver.hpp"
-
-namespace dataset_player
-{
-
-class DatasetPlayerNode : public rclcpp::Node
-{
+//This will use Yaml config to create a sensor driver
+//Will be agnostic against driver and init it
+//Will init publishermanager
+class DatasetPlayerNode{
 public:
     DatasetPlayerNode();
 
 private:
     void loadParameters();
+
     void initializeDriver();
+
     void initializePublishers();
 
     void timerCallback();
 
-private:
-    std::string dataset_path_;
-    std::string config_file_;
+     // Parameters
+    std::string datasetType_;
+    std::string datasetPath_;
+    double playbackRate_ = 30.0;
 
-    double playback_rate_;
-
+    // ROS
     rclcpp::TimerBase::SharedPtr timer_;
 
-    std::shared_ptr<dataset_driver::DatasetDriver> driver_;
+    // Sensor infrastructure
+    SensorManager sensorManager_;
 
+    // Driver abstraction
+    std::shared_ptr<SensorDriver> driver_;
+
+    // Publisher manager
     std::unique_ptr<PublisherManager> publisherManager_;
 };
-
-}

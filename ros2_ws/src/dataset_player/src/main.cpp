@@ -1,1 +1,0 @@
-//Every node needs an entry point
