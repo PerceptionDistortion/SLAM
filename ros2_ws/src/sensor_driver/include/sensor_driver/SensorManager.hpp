@@ -41,7 +41,5 @@ public:
 
 private:
 
-    std::unordered_map<
-        std::string,
-        std::shared_ptr<Sensor>> sensors_;
+    std::unordered_map<std::string,std::shared_ptr<Sensor>> sensors_;
 };

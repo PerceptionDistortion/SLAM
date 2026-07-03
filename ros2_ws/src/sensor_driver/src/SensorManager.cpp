@@ -6,18 +6,14 @@ bool SensorManager::registerSensor(const std::shared_ptr<Sensor>& sensor)
 
     const auto& id = sensor->context().id;
 
-    if (hasSensor(id))
-    {
-        return false;
-    }
+    if (hasSensor(id)) return false;
 
     sensors_[id] = sensor;
 
     return true;
 }
 
-std::shared_ptr<Sensor> SensorManager::getSensor(
-    const std::string& sensorId) const
+std::shared_ptr<Sensor> SensorManager::getSensor(const std::string& sensorId) const
 {
     auto it = sensors_.find(sensorId);
 
@@ -29,8 +25,7 @@ std::shared_ptr<Sensor> SensorManager::getSensor(
     return it->second;
 }
 
-std::vector<std::shared_ptr<Sensor>>
-SensorManager::getSensors() const
+std::vector<std::shared_ptr<Sensor>>SensorManager::getSensors() const
 {
     std::vector<std::shared_ptr<Sensor>> sensors;
 

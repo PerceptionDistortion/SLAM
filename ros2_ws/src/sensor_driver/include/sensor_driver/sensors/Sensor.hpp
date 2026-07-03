@@ -8,10 +8,7 @@ class Sensor
 {
 public:
 
-    explicit Sensor(const SensorContext& context)
-        : context_(context)
-    {
-    }
+    explicit Sensor(const SensorContext& context): context_(context){}
 
     virtual ~Sensor() = default;
 

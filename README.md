@@ -61,35 +61,26 @@ The project emphasizes clean architecture, modular design, scalability, and main
 # Architecture
 
 ```
-                   +----------------------+
-                   |    Sensor Manager    |
-                   +----------+-----------+
-                              |
-        +---------------------+----------------------+
-        |                                            |
-+---------------+                          +----------------+
-| Camera Driver |                          | Dataset Driver |
-+---------------+                          +----------------+
-        |                                            |
-        +---------------------+----------------------+
-                              |
-                     Camera Buffer
-                              |
-                      Visual Frontend
-                              |
-       +----------------------+----------------------+
-       |                                             |
- Feature Tracking                        Pose Estimation
-       |                                             |
-       +----------------------+----------------------+
-                              |
-                        Mapping Module
-                              |
-                    Local Map / Landmarks
-                              |
-                     Backend Optimization
-                              |
-                     Visualization Layer
+                       YAML Configuration
+                   (dataset type, path, rate)
+                              │
+                              ▼
+                    DatasetPlayerNode
+                              │
+             ┌────────────────┴────────────────┐
+             │                                 │
+             ▼                                 ▼
+      SensorDriver                    PublisherManager
+      (Abstraction)                           │
+             ▲                               owns
+      ┌──────┴───────────┐          ┌─────────┼─────────┐
+      │                  │          ▼         ▼         ▼
+      ▼                  ▼   CameraPublisher ImuPublisher LidarPublisher
+ DatasetDriver      LiveSensorDriver
+      ▲                  ▲
+      │                  │
+      ▼                  ▼
+EurocDatasetDriver   RealsenseDriver
 ```
 
 ---
