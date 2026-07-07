@@ -12,7 +12,7 @@
 //This will use Yaml config to create a sensor driver
 //Will be agnostic against driver and init it
 //Will init publishermanager
-class DatasetPlayerNode{
+class DatasetPlayerNode : public rclcpp::Node{
 public:
     DatasetPlayerNode();
 
