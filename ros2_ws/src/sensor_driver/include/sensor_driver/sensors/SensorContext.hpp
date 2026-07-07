@@ -2,7 +2,7 @@
 
 #include<string>
 
-#include"sensors/SensorType.hpp"
+#include "sensor_driver/sensors/SensorType.hpp"
 
 struct SensorContext{
 

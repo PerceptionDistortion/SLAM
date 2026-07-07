@@ -1,7 +1,7 @@
 #pragma once
 
-#include"RawSensorData.hpp"
-#include"sensors/CameraSensor.hpp"
+#include "sensor_driver/raw_sensor_data/RawSensorData.hpp"
+#include "sensor_driver/sensors/CameraSensor.hpp"
 
 class CameraRawData : public RawSensorData
 {

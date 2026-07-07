@@ -2,8 +2,10 @@
 
 #include <memory>
 
-#include "sensors/SensorContext.hpp"
+#include "sensor_driver/sensors/SensorContext.hpp"
 
+//No cpp required
+//All functions implemented inline
 class Sensor
 {
 public:

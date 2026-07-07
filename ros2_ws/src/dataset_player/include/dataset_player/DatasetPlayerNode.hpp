@@ -7,7 +7,7 @@
 
 #include"sensor_driver/SensorManager.hpp"
 #include"sensor_driver/sensor_drivers/SensorDriver.hpp"
-#include"dataset_player/PublisherManager.hpp"
+#include"dataset_player/publishers/PublisherManager.hpp"
 
 //This will use Yaml config to create a sensor driver
 //Will be agnostic against driver and init it

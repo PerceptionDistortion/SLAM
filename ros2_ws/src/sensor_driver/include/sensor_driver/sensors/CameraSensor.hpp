@@ -2,7 +2,7 @@
 
 #include <opencv2/core.hpp>
 
-#include "Sensor.hpp"
+#include "sensor_driver/sensors/Sensor.hpp"
 
 class CameraSensor : public Sensor
 {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Sensor.hpp"
+#include "sensor_driver/sensors/Sensor.hpp"
 
 class ImuSensor : public Sensor
 {
