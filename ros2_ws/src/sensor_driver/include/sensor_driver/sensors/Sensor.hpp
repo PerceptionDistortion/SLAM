@@ -10,8 +10,8 @@ class Sensor
 {
 public:
 
+    //Constructor and destructor
     explicit Sensor(const SensorContext& context): context_(context){}
-
     virtual ~Sensor() = default;
 
     const SensorContext& context() const

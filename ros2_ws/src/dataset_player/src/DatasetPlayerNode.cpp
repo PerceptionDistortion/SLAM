@@ -73,15 +73,9 @@ void DatasetPlayerNode::initializeDriver()
 
 void DatasetPlayerNode::initializePublishers()
 {
-    publisherManager_ =
-        std::make_unique<PublisherManager>(
-            shared_from_this());
-
+    publisherManager_ =std::make_unique<PublisherManager>(this);
     publisherManager_->initialize(sensorManager_);
-
-    RCLCPP_INFO(
-        get_logger(),
-        "Publishers initialized.");
+    RCLCPP_INFO(get_logger(),"Publishers initialized.");
 }
 
 void DatasetPlayerNode::timerCallback()

@@ -5,9 +5,8 @@ class ImuPublisher : public SensorPublisher
 {
 public:
 
-    ImuPublisher(
-        const rclcpp::Node::SharedPtr& node,
-        std::shared_ptr<Sensor> sensor);
+    ImuPublisher(rclcpp::Node* node,
+    std::shared_ptr<Sensor> sensor);
 
     void publish(
         const std::shared_ptr<RawSensorData>& data) override;

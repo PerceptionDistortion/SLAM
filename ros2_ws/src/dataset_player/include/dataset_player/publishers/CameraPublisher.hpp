@@ -4,9 +4,7 @@ class CameraPublisher : public SensorPublisher
 {
 public:
 
-    CameraPublisher(
-        const rclcpp::Node::SharedPtr& node,
-        std::shared_ptr<Sensor> sensor);
+    CameraPublisher(rclcpp::Node* node,std::shared_ptr<Sensor> sensor);
 
     void publish(
         const std::shared_ptr<RawSensorData>& data) override;

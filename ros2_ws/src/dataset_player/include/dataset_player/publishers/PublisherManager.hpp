@@ -14,22 +14,17 @@ class PublisherManager
 {
 public:
 
-    explicit PublisherManager(
-        const rclcpp::Node::SharedPtr& node);
-
+    explicit PublisherManager(rclcpp::Node* node);
     ~PublisherManager() = default;
 
     /// Create publishers for every registered sensor.
-    void initialize(
-        const SensorManager& sensorManager);
+    void initialize(const SensorManager& sensorManager);
 
     /// Publish one chronological bundle.
-    void publish(
-        const SensorDataBundle& bundle);
+    void publish(const SensorDataBundle& bundle);
 
 private:
 
-    rclcpp::Node::SharedPtr node_;
-
+    rclcpp::Node* node_;
     std::unordered_map<std::string,std::unique_ptr<SensorPublisher>> publishers_;
 };

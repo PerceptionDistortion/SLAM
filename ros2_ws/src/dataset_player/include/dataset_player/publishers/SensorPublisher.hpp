@@ -13,20 +13,15 @@
 class SensorPublisher{
     public:
     SensorPublisher(
-        const rclcpp::Node::SharedPtr& node,
-        std::shared_ptr<Sensor> sensor)
-        : node_(node),
-          sensor_(std::move(sensor))
-    {
-    }
+    rclcpp::Node* node,std::shared_ptr<Sensor> sensor): node_(node),sensor_(std::move(sensor)){}
 
     virtual ~SensorPublisher() = default;
 
     /// Publish one piece of sensor data.
     virtual void publish(
         const std::shared_ptr<RawSensorData>& data) = 0;
-    private:
-    rclcpp::Node::SharedPtr node_;
 
+    protected:
+    rclcpp::Node* node_;
     std::shared_ptr<Sensor> sensor_;
 };

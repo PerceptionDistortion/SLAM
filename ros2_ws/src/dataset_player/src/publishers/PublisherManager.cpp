@@ -6,13 +6,12 @@
 #include "dataset_player/publishers/ImuPublisher.hpp"
 
 PublisherManager::PublisherManager(
-    const rclcpp::Node::SharedPtr& node)
+    rclcpp::Node* node)
     : node_(node)
 {
 }
 
-void PublisherManager::initialize(
-    const SensorManager& sensorManager)
+void PublisherManager::initialize(const SensorManager& sensorManager)
 {
     publishers_.clear();
 
@@ -22,12 +21,7 @@ void PublisherManager::initialize(
         {
         case SensorType::camera:
 
-            publishers_.emplace(
-                sensor->id(),
-                std::make_unique<CameraPublisher>(
-                    node_,
-                    sensor));
-
+            publishers_.emplace(sensor->id(),std::make_unique<CameraPublisher>(node_,sensor));
             break;
 
         case SensorType::imu:

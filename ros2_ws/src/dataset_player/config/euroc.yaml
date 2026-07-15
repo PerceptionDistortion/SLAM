@@ -1,0 +1,8 @@
+dataset_player:
+  ros__parameters:
+
+    dataset_type: "euroc"
+
+    dataset_path: "/home/anupam/datasets/euroc"
+
+    playback_rate: 1.0
